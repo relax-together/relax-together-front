@@ -40,7 +40,7 @@ export default function ReviewContent(props: ReviewCardProps) {
 
   return (
     <div
-      className={`flex ${page === Page.GATHERING_DETAIL ? 'min-h-[102px]' : ''} flex-col gap-2 border-b-2 border-dashed border-b-gray-200 pb-1 text-gray-700 sm:w-full`}
+      className={`flex ${page === Page.GATHERING_DETAIL ? 'min-h-[102px] py-4' : 'pb-1'} flex-col gap-2 border-b-2 border-dashed border-b-gray-200 text-gray-700 sm:w-full`}
     >
       <div className="relative flex flex-col gap-[10px]">
         <ReviewHearts score={score} />

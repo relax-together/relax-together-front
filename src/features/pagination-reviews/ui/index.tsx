@@ -76,7 +76,7 @@ export default function PaginationReviews({
     };
 
     const handlePageBtnClick = (value: number) => {
-      handlePageChange(value);
+      handlePageChange(value - 1);
     };
 
     if (value === PaginationItemType.NEXT) {

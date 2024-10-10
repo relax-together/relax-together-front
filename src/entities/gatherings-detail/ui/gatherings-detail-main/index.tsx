@@ -33,7 +33,7 @@ export default function GatheringsDetailMain({
   return (
     <>
       <div
-        className={`mx-auto max-w-[996px] px-4 pt-6 sm:px-6 sm:pb-[84px] sm:pt-[27.5px] lg:px-0 lg:pt-[29.5px] ${isHost ? 'pb-[134px]' : 'pb-[96px]'}`}
+        className={`mx-auto max-w-[996px] px-4 pt-6 sm:px-6 sm:pb-[84px] sm:pt-[27.5px] md:pb-[110px] lg:px-0 lg:pt-[29.5px] ${isHost ? 'pb-[154px]' : 'pb-[114px]'}`}
       >
         {gatheringsInfo && participantList && (
           <GatheringTop

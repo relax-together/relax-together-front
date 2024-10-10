@@ -55,7 +55,7 @@ describe('Pagination Component', () => {
 
     const pageButton = screen.getByRole('button', { name: '2' });
     fireEvent.click(pageButton);
-    expect(mockProps.setCurrentPage).toHaveBeenCalledWith(2);
+    expect(mockProps.setCurrentPage).toHaveBeenCalledWith(1);
   });
 
   test('이전, 다음 버튼 클릭 시 setCurrentPage가 호출된다.', () => {
