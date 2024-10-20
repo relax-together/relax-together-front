@@ -22,24 +22,9 @@ const getEmail = async (token: string | null) => {
   return response.json() as Promise<{ email: string }>;
 };
 
-const getSession = async (isLoginUser?: string) => {
-  const response = await fetch(
-    `${process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://relax-together.web.app'}/api/session`,
-    {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ isLoginUser }),
-    },
-  );
-  return response.json() as Promise<{ session: boolean }>;
-};
-
-export async function middleware(req: NextRequest, res: NextResponse) {
+export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
   const isLoginUser = req.cookies.get('isLoginUser')?.value;
-  const { session } = await getSession(isLoginUser);
 
   const targetPathname = pathname.split('/')[1];
   const isWithAuth = withAuthList.includes(`/${targetPathname}`);
@@ -47,13 +32,13 @@ export async function middleware(req: NextRequest, res: NextResponse) {
   const url = req.nextUrl.clone();
 
   if (isWithAuth) {
-    if (!session) {
+    if (isLoginUser === 'false') {
       return NextResponse.redirect(new URL(FALLBACK_URL, req.url));
     }
   }
 
   if (isWithOutAuth) {
-    if (session) {
+    if (isLoginUser === 'true') {
       return NextResponse.redirect(new URL(FALLBACK_URL, req.url));
     }
   }
