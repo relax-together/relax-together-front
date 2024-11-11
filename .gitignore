@@ -47,3 +47,8 @@ node_modules/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+
+# JetBrains IDE
+.idea/
+*.iml
+*.iws
